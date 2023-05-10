@@ -36,12 +36,20 @@ public class Mundo {
         }
     }
 
-    public void desenhaMundo(){
-        for(int i=0; i<LARGURA; i++){
-            for(int j=0; j<ALTURA; j++){
+    public void desenhaMundo() {
+        for (int i = 0; i < LARGURA; i++) {
+            for (int j = 0; j < ALTURA; j++) {
                 switch (mapa[i][j]) {
                     case 0 -> System.out.print(Colors.WHITE.getColorCode() + "0");
-                    case 1 -> System.out.print(Colors.BLUE.getColorCode() + "1");
+                    case 1 ->{
+                        int cor = getPessoa(i, j).getCor();
+                        if(cor == 1) {
+                            System.out.print(Colors.BLUE.getColorCode() + "1");
+                        } else if(cor == 2) {
+                            System.out.print(Colors.RED.getColorCode() + "2");
+                        }
+
+                    }
                 }
             }
             System.out.println();

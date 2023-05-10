@@ -96,17 +96,47 @@ public class Mundo {
         }
     }
 
+    public void criaDestruidoraFakeNews(IADestruidoraFakeNews IADestruidoraFakeNews) {
+        int x = (int) (Math.random() * LARGURA);
+        int y = (int) (Math.random() * ALTURA);
+        ArrayList<int[]> coordenadas = new ArrayList<int[]>();
+        int[] coordenadaInicial = {x, y};
+        coordenadas.add(coordenadaInicial);
+
+        // adiciona coordenadas adjacentes
+        int[][] deltas = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}}; // cima, baixo, esquerda, direita
+        for (int[] delta : deltas) {
+            int novoX = x + delta[0];
+            int novoY = y + delta[1];
+            if (novoX >= 0 && novoX < LARGURA && novoY >= 0 && novoY < ALTURA) {
+                int[] novaCoordenada = {novoX, novoY};
+                coordenadas.add(novaCoordenada);
+            }
+        }
+
+        IADestruidoraFakeNews.setCor(3);
+        IADestruidoraFakeNews.setCoordenadas(coordenadas);
+    }
+
+    public void desenhaDestruidoraFakeNews(IADestruidoraFakeNews IADestruidoraFakeNews) {
+        for (int[] coordenada : IADestruidoraFakeNews.getCoordenadas()) {
+            mapa[coordenada[0]][coordenada[1]] = 3;
+        }
+    }
 
 
     public void desenhaMundo() {
         System.out.println("Desenhando mundo...");
         MeioComunicacaoConfiavel meioComunicacaoConfiavel = new MeioComunicacaoConfiavel();
         IAGeradoraFakeNews geradoraFakeNews = new IAGeradoraFakeNews();
+        IADestruidoraFakeNews destruidoraFakeNews = new IADestruidoraFakeNews();
 
         criaMeioComunicacaoConfiavel(meioComunicacaoConfiavel);
         desenhaMeioComunicacaoConfiavel(meioComunicacaoConfiavel);
         criaGeradoraFakeNews(geradoraFakeNews);
         desenhaGeradoraFakeNews(geradoraFakeNews);
+        criaDestruidoraFakeNews(destruidoraFakeNews);
+        desenhaDestruidoraFakeNews(destruidoraFakeNews);
 
         for (int i = 0; i < LARGURA; i++) {
             for (int j = 0; j < ALTURA; j++) {
@@ -116,6 +146,7 @@ public class Mundo {
                         System.out.print(Colors.getColor(getPessoa(i, j).getCor()) + "P");
                     }
                     case 2 -> System.out.print(Colors.getColor(2) + "G");
+                    case 3 -> System.out.print(Colors.getColor(3) + "D");
                     case 4 -> System.out.print(Colors.getColor(4) + "M");
                 }
             }

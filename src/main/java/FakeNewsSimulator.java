@@ -12,7 +12,7 @@ public class FakeNewsSimulator {
         mundo.desenhaMundo();
         for(Pessoa pessoa : mundo.getMapaPessoas()){
             if (pessoa!=null){
-                mundo.getPessoasAdjacentes(pessoa);
+                mundo.getPessoasAdjacentes(pessoa, false);
             }
         }
 

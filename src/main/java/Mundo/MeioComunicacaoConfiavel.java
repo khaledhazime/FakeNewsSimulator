@@ -8,7 +8,7 @@ public class MeioComunicacaoConfiavel {
     private List<int[]> coordenadas;
 
     public MeioComunicacaoConfiavel(){
-        this.cor = 1;
+        this.cor = 4;
         this.coordenadas = new ArrayList<int[]>();
     }
 

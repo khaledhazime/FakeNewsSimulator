@@ -58,6 +58,9 @@ public class Pessoa {
     }
 
     public void addContatos(Pessoa contato) {
+        if (this.AgendaContatos.contains(contato)) {
+            return;
+        }
         this.AgendaContatos.add(contato);
     }
 }

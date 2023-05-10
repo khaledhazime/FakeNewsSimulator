@@ -4,29 +4,22 @@ package Colors;
  *
  * @author khaledhazime
  */
-public enum Colors {
+public class Colors {
     // Set terminal colors enums
-    WHITE("\033[0;37m"),
-    RED("\033[0;31m"),
-    GREEN("\033[0;32m"),
-    BLUE("\033[0;34m");
+    static String WHITE = "\033[0;37m";
+    static String RED = "\033[0;31m";
+    static String GREEN = "\033[0;32m";
+    static String BLUE = "\033[0;34m";
+    static String YELLOW = "\033[0;33m";
     
-    private final String colorCode;
-    Colors(String colorCode){
-        this.colorCode = colorCode;
-    }
-
-    public String getColorCode(){
-        return this.colorCode;
-    }
-
-    public String setColor(int color){
+    // Set terminal colors methods
+    public static String getColor(int color){
         return switch (color) {
-            case 0 -> Colors.WHITE.getColorCode();
-            case 1 -> Colors.BLUE.getColorCode();
-            case 2 -> Colors.RED.getColorCode();
-            case 3 -> Colors.GREEN.getColorCode();
-            default -> Colors.WHITE.getColorCode();
+            case 1 -> BLUE;
+            case 2 -> RED;
+            case 3 -> GREEN;
+            case 4 -> YELLOW;
+            default -> WHITE;
         };
     }
 

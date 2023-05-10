@@ -60,6 +60,7 @@ public class Mundo {
 
         meioComunicacaoConfiavel.setCor(4);
         meioComunicacaoConfiavel.setCoordenadas(coordenadas);
+        desenhaMeioComunicacaoConfiavel(meioComunicacaoConfiavel);
     }
 
     public void desenhaMeioComunicacaoConfiavel(MeioComunicacaoConfiavel meioComunicacaoConfiavel) {
@@ -88,6 +89,7 @@ public class Mundo {
 
         IAGeradoraFakeNews.setCor(2);
         IAGeradoraFakeNews.setCoordenadas(coordenadas);
+        desenhaGeradoraFakeNews(IAGeradoraFakeNews);
     }
 
     public void desenhaGeradoraFakeNews(IAGeradoraFakeNews IAGeradoraFakeNews) {
@@ -116,6 +118,7 @@ public class Mundo {
 
         IADestruidoraFakeNews.setCor(3);
         IADestruidoraFakeNews.setCoordenadas(coordenadas);
+        desenhaDestruidoraFakeNews(IADestruidoraFakeNews);
     }
 
     public void desenhaDestruidoraFakeNews(IADestruidoraFakeNews IADestruidoraFakeNews) {
@@ -126,18 +129,6 @@ public class Mundo {
 
 
     public void desenhaMundo() {
-        System.out.println("Desenhando mundo...");
-        MeioComunicacaoConfiavel meioComunicacaoConfiavel = new MeioComunicacaoConfiavel();
-        IAGeradoraFakeNews geradoraFakeNews = new IAGeradoraFakeNews();
-        IADestruidoraFakeNews destruidoraFakeNews = new IADestruidoraFakeNews();
-
-        criaMeioComunicacaoConfiavel(meioComunicacaoConfiavel);
-        desenhaMeioComunicacaoConfiavel(meioComunicacaoConfiavel);
-        criaGeradoraFakeNews(geradoraFakeNews);
-        desenhaGeradoraFakeNews(geradoraFakeNews);
-        criaDestruidoraFakeNews(destruidoraFakeNews);
-        desenhaDestruidoraFakeNews(destruidoraFakeNews);
-
         for (int i = 0; i < LARGURA; i++) {
             for (int j = 0; j < ALTURA; j++) {
                 switch (mapa[i][j]) {

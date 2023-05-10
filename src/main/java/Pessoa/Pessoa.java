@@ -14,6 +14,7 @@ public class Pessoa {
     private final ArrayList<Pessoa> AgendaContatos;
     private boolean isResistente;
     private boolean hasFakeNews;
+    private int tempo;
     
     public Pessoa(int x, int y, int cor, String whatsappID) {
         this.x = x;
@@ -23,6 +24,7 @@ public class Pessoa {
         this.AgendaContatos = new ArrayList<>();
         this.isResistente = false;
         this.hasFakeNews = false;
+        this.tempo=0;
     }
 
     public int getX() {

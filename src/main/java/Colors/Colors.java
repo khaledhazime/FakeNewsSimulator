@@ -21,4 +21,14 @@ public enum Colors {
         return this.colorCode;
     }
 
+    public String setColor(int color){
+        return switch (color) {
+            case 0 -> Colors.WHITE.getColorCode();
+            case 1 -> Colors.BLUE.getColorCode();
+            case 2 -> Colors.RED.getColorCode();
+            case 3 -> Colors.GREEN.getColorCode();
+            default -> Colors.WHITE.getColorCode();
+        };
+    }
+
 }

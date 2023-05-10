@@ -1,5 +1,8 @@
 package Pessoa;
 
+import java.util.Random;
+import Mundo.Mundo;
+
 /**
  *
  * @author khaledhazime

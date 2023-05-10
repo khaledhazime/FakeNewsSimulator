@@ -12,6 +12,8 @@ public class Pessoa {
     private int cor;
     private String whatsappID;
     private final ArrayList<Pessoa> AgendaContatos;
+    private boolean isResistente;
+    private boolean hasFakeNews;
     
     public Pessoa(int x, int y, int cor, String whatsappID) {
         this.x = x;
@@ -19,6 +21,8 @@ public class Pessoa {
         this.cor = 1;
         this.whatsappID = whatsappID;
         this.AgendaContatos = new ArrayList<>();
+        this.isResistente = false;
+        this.hasFakeNews = false;
     }
 
     public int getX() {
@@ -62,5 +66,21 @@ public class Pessoa {
             return;
         }
         this.AgendaContatos.add(contato);
+    }
+
+    public void setResistente(boolean isResistente) {
+        this.isResistente = isResistente;
+    }
+
+    public boolean isResistente() {
+        return this.isResistente;
+    }
+
+    public void setFakeNews(boolean hasFakeNews) {
+        this.hasFakeNews = hasFakeNews;
+    }
+
+    public boolean hasFakeNews() {
+        return this.hasFakeNews;
     }
 }

@@ -31,6 +31,7 @@ public class Mundo {
             int cor = 1;
             String whatsappID = "Pessoa" + i;
             Pessoa pessoa = new Pessoa(x, y, cor, whatsappID);
+            mapaPessoas[i] = pessoa;
             mapa[x][y] = cor;
         }
     }

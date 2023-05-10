@@ -5,9 +5,10 @@ import Colors.Colors;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
+ * Classe que representa o mundo onde as pessoas estão
+ * Possui métodos para adicionar pessoas aleatórias e desenhar o mundo, junto às IAs e o meio de comunicação confiável
  *
  * @author khaledhazime
  */
@@ -57,8 +58,7 @@ public class Mundo {
             }
         }
 
-
-        meioComunicacaoConfiavel.setCor(1);
+        meioComunicacaoConfiavel.setCor(4);
         meioComunicacaoConfiavel.setCoordenadas(coordenadas);
     }
 
@@ -68,21 +68,54 @@ public class Mundo {
         }
     }
 
+    public void criaGeradoraFakeNews(IAGeradoraFakeNews IAGeradoraFakeNews) {
+        int x = (int) (Math.random() * LARGURA);
+        int y = (int) (Math.random() * ALTURA);
+        ArrayList<int[]> coordenadas = new ArrayList<int[]>();
+        int[] coordenadaInicial = {x, y};
+        coordenadas.add(coordenadaInicial);
+
+        // adiciona coordenadas adjacentes
+        int[][] deltas = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}}; // cima, baixo, esquerda, direita
+        for (int[] delta : deltas) {
+            int novoX = x + delta[0];
+            int novoY = y + delta[1];
+            if (novoX >= 0 && novoX < LARGURA && novoY >= 0 && novoY < ALTURA) {
+                int[] novaCoordenada = {novoX, novoY};
+                coordenadas.add(novaCoordenada);
+            }
+        }
+
+        IAGeradoraFakeNews.setCor(2);
+        IAGeradoraFakeNews.setCoordenadas(coordenadas);
+    }
+
+    public void desenhaGeradoraFakeNews(IAGeradoraFakeNews IAGeradoraFakeNews) {
+        for (int[] coordenada : IAGeradoraFakeNews.getCoordenadas()) {
+            mapa[coordenada[0]][coordenada[1]] = 2;
+        }
+    }
+
+
 
     public void desenhaMundo() {
         System.out.println("Desenhando mundo...");
         MeioComunicacaoConfiavel meioComunicacaoConfiavel = new MeioComunicacaoConfiavel();
+        IAGeradoraFakeNews geradoraFakeNews = new IAGeradoraFakeNews();
 
         criaMeioComunicacaoConfiavel(meioComunicacaoConfiavel);
         desenhaMeioComunicacaoConfiavel(meioComunicacaoConfiavel);
+        criaGeradoraFakeNews(geradoraFakeNews);
+        desenhaGeradoraFakeNews(geradoraFakeNews);
 
         for (int i = 0; i < LARGURA; i++) {
             for (int j = 0; j < ALTURA; j++) {
                 switch (mapa[i][j]) {
-                    case 0 -> System.out.print(Colors.getColor(0) + "0");
+                    case 0 -> System.out.print(Colors.getColor(0) + " ");
                     case 1 ->{
                         System.out.print(Colors.getColor(getPessoa(i, j).getCor()) + "P");
                     }
+                    case 2 -> System.out.print(Colors.getColor(2) + "G");
                     case 4 -> System.out.print(Colors.getColor(4) + "M");
                 }
             }

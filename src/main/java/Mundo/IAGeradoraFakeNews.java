@@ -3,11 +3,11 @@ package Mundo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class geradoraFakeNews {
+public class IAGeradoraFakeNews {
     private int cor;
     private List<int[]> coordenadas;
 
-    public geradoraFakeNews(){
+    public IAGeradoraFakeNews(){
         this.cor = 2;
         this.coordenadas = new ArrayList<int[]>();
     }

@@ -1,6 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
+import Mundo.Mundo;
 
 /**
  *
@@ -9,6 +7,8 @@
 public class FakeNewsSimulator {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Mundo mundo = new Mundo();
+        mundo.adicionaPessoasAleatorias(100);
+        mundo.desenhaMundo();
     }
 }

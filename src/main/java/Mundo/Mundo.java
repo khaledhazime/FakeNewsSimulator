@@ -48,4 +48,50 @@ public class Mundo {
         }
     }
 
+    public Pessoa[] getMapaPessoas() {
+        return mapaPessoas;
+    }
+
+    public Pessoa getPessoa(int x, int y) {
+        if (mapa[x][y] == 1) {
+            for (Pessoa pessoa : mapaPessoas) {
+                if (pessoa.getX() == x && pessoa.getY() == y) {
+                    return pessoa;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void getPessoasAdjacentes(Pessoa pessoa){
+        int x = pessoa.getX();
+        int y = pessoa.getY();
+        Pessoa pessoaAdjacente;
+        if (x > 0 && mapa[x - 1][y] == 1) {
+            pessoaAdjacente = getPessoa(x - 1, y);
+            pessoa.addContatos(pessoaAdjacente);
+        }
+        if (x < LARGURA - 1 && mapa[x + 1][y] == 1) {
+            pessoaAdjacente = getPessoa(x + 1, y);
+            pessoa.addContatos(pessoaAdjacente);
+        }
+        if (y > 0 && mapa[x][y - 1] == 1) {
+            pessoaAdjacente = getPessoa(x, y - 1);
+            pessoa.addContatos(pessoaAdjacente);
+        }
+        if (y < ALTURA - 1 && mapa[x][y + 1] == 1) {
+            pessoaAdjacente = getPessoa(x, y + 1);
+            pessoa.addContatos(pessoaAdjacente);
+        }
+        if (pessoa.getAgendaContatos().size() > 0){
+            System.out.println(pessoa.getWhatsappID() + " tem " + pessoa.getAgendaContatos().size() + " contatos");
+            System.out.print("Contatos: [");
+            for (Pessoa contato : pessoa.getAgendaContatos()) {
+                System.out.print(contato.getWhatsappID() + ", ");
+            }
+            System.out.println("]");
+        }
+
+    }
 }
+

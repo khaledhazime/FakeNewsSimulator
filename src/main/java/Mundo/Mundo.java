@@ -14,7 +14,9 @@ public class Mundo {
 
     private final int[][] mapa = new int[LARGURA][ALTURA];
 
-    public Mundo(){
+    private final Pessoa[] mapaPessoas = new Pessoa[LARGURA * ALTURA];
+
+    public Mundo() {
         System.out.println("Criando mundo...");
         for (int i = 0; i < LARGURA; i++) {
             Arrays.fill(mapa[i], 0);
